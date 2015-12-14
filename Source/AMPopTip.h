@@ -161,6 +161,14 @@ typedef NS_ENUM(NSInteger, AMPopTipActionAnimation) {
  */
 - (void)hide;
 
+/** Hide the popover
+ *
+ * Hides the popover and removes it from the view.
+ * The property isVisible will be set to NO when the animation is complete and the popover is removed from the parent view.
+ *  @param completion block that would be called after popup is hided 
+ */
+- (void)hide:(void(^)(void))completion;
+
 /** Update the text
  *
  * Set the new text shown in the poptip

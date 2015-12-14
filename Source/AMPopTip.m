@@ -380,7 +380,7 @@
     }
 }
 
-- (void)hide {
+- (void)hide:(void(^)(void))completion {
     if (!self.isVisible || self.isAnimating) {
         return;
     }
@@ -404,8 +404,15 @@
             if (self.dismissHandler) {
                 self.dismissHandler();
             }
+            if (completion) {
+                completion();
+            }
         }];
     }
+}
+
+- (void)hide {
+    [self hide:nil];
 }
 
 - (void)updateText:(NSString *)text {
