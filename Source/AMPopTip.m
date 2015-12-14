@@ -90,6 +90,8 @@
     _actionAnimationOut = kDefaultBounceAnimationOut;
     _tapRemoveGesture = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapRemoveGestureHandler)];
     _swipeRemoveGesture = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(swipeRemoveGestureHandler)];
+    _tapRemoveGesture.cancelsTouchesInView = NO;
+    _swipeRemoveGesture.cancelsTouchesInView = NO;
 }
 
 - (void)layoutSubviews {
@@ -224,6 +226,7 @@
     }
     
     self.gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+    self.gestureRecognizer.cancelsTouchesInView = NO;
     [self addGestureRecognizer:self.gestureRecognizer];
     [self setNeedsDisplay];
 }
