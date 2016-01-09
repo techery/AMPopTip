@@ -385,7 +385,10 @@
 
 - (void)hide:(void(^)(void))completion {
     if (!self.isVisible || self.isAnimating) {
-        return;
+        [self removeFromSuperview];
+        if (completion) {
+            completion();
+        } 
     }
     self.isAnimating = YES;
     [self.dismissTimer invalidate];
